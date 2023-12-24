@@ -1,3 +1,3 @@
 <?php
 
-echo 'Pagina config si';
+echo 'Pagina config si ';
