@@ -18,7 +18,7 @@ class Usuario extends Connection
     public static function obtenerDatoId($id)
     {
         try {
-            $sql = "SELECT * FROM usuario WHERE id=id";
+            $sql = "SELECT * FROM usuario WHERE id= :id ";
             $stmt = Connection::getConnection()->prepare($sql);
             $stmt -> bindParam(':id', $id);
             $stmt-> execute();
@@ -32,7 +32,7 @@ class Usuario extends Connection
     public static function guardarDatos($data)
     {
         try{
-            $sql = "INSERT INTO usuario (nombre, mail, edad) VALUES (:nombre,:email, :edad)";
+            $sql = "INSERT INTO usuario (nombre, email, edad) VALUES (:nombre,:email, :edad)";
             $stmt = Connection::getConnection()->prepare($sql);
             $stmt -> bindParam(':nombre', $data['nombre']);
             $stmt -> bindParam(':email', $data['email']);
@@ -52,6 +52,7 @@ class Usuario extends Connection
             $stmt -> bindParam(':nombre', $data['nombre']);
             $stmt -> bindParam(':email', $data['email']);
             $stmt -> bindParam(':edad', $data['edad']);
+            $stmt -> bindParam(':id', $data['id']);
             $stmt -> execute();
             return true;
         } catch (PDOException $th) {
