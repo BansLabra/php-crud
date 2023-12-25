@@ -1,5 +1,5 @@
 <?php
-require_once "./app/config/connection.php";
+require_once "../config/connection.php";
 class Usuario extends Connection
 {
     public static function mostrarDatos()
